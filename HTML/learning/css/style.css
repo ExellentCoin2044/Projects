@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	font: normal 16px Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4
+}
+
+.container {
+	width: 80%;
+	margin:auto;
+}
+
+#main_header {
+	background-color: coral;
+}
+
+#navbar a {
+	text-decoration: none;
+	color: black;
+}
+
+#navbar a:visited {
+	color: #ed7207;
+}
+
+#navbar li {
+	display: inline;
+	margin: 10px;
+}
