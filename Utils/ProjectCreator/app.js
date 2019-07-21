@@ -11,6 +11,9 @@ function createProject() {
 
     makeFile();
 
+    //checks what the first parameter is, if it is react then init the react project if it is node do an npm init
+    check();
+
     gitInit()
 }
 
@@ -20,6 +23,10 @@ function makeFile() {
             return console.log(err);
         }
     });
+}
+
+function check() {
+
 }
 
 function gitInit() {
