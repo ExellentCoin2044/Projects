@@ -8,7 +8,7 @@ let checkingVertex;
 let index;
 
 const buffer = 20;
-const amount = 100;
+const amount = 300;
 
 function setup() {
     createCanvas(600, 600);
