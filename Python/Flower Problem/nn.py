@@ -1,6 +1,8 @@
 import numpy as np
+import keyboard as kb
+import sys
 
-neural_network_data = open('NN.txt', 'w+')
+itterations = 1000000000
 
 # Training data
 flowers = [[3, 1.5, 1],
@@ -30,7 +32,7 @@ def neural_network():
     learning_rate = 0.2  # The speed at wich the NN learns
 
     # Learning with a random point that changes every time
-    for i in range(10000000000000):
+    for i in range(itterations):
         # Taking a random point to learn
         rand_index = np.random.randint(len(flowers))
         learning_flower = flowers[rand_index]
@@ -60,9 +62,24 @@ def neural_network():
         w2 = w2 - learning_rate * dc_dw2
         b = b - learning_rate * dc_db
 
-    neural_network_data.write(str(w1) + ' ')
-    neural_network_data.write(str(w2) + ' ')
-    neural_network_data.write(str(b))
+        # Printing the number of itterations
+        if (i % 100) == 0:
+            neural_network_data = open('NN.txt', 'w+')
+            neural_network_data.write(str(w1) + ' ')
+            neural_network_data.write(str(w2) + ' ')
+            neural_network_data.write(str(b) + '\n \n')
+
+        if (i % 100000) == 0:
+            print(np.around(i/itterations * 100, decimals=4))
+
+        # Check if ctrl + S is pressed and save the current neural network
+            if kb.is_pressed('ctrl+s'):
+                neural_network_data.close()
+                print('You closed the app')
+                sys.exit()
+            else:
+                pass
+
     neural_network_data.close()
 
 
