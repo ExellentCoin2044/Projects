@@ -9,8 +9,8 @@ public class Player extends Creature{
 	
 	private Game game;
 
-	public Player(Game game, float x, float y, int health) {
-		super(x, y, health);
+	public Player(Game game, float x, float y, int width, int height) {
+		super(x, y, width, height);
 		this.game = game;
 	}
 	

@@ -11,7 +11,7 @@ public class GameState extends State {
 
 	public GameState(Game game) {
 		super(game);
-		player = new Player(game, 50, 50, 10);
+		player = new Player(game, 50, 50, 0, 0);
 	}
 	
 	public void update() {
