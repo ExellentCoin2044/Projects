@@ -1,0 +1,12 @@
+{
+  "name": "tensorflow_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "author": "Jonas",
+  "license": "ISC",
+  "dependencies": {}
+}
