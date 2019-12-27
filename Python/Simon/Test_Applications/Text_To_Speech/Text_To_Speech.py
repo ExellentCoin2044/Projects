@@ -4,7 +4,10 @@ import numpy as np
 engine = tts.init()
 
 voices = engine.getProperty('voices')
+
 engine.setProperty('voice', voices[2].id)
+
+print(voices[2].id)
 
 goodmorning = ['Hello sir.', 'Good seeing you sir.', 'Goodmorning sir']
 
