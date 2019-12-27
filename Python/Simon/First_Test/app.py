@@ -12,17 +12,46 @@ speech_engine = tts.init() #Engine to give Simon a mouth to speak
 speech_engine.setProperty('voice', voice) #Give Simon the predefined voice
 
 def Simon():
-    r1.adjust_for_ambient_noise(mic) #Adjusting the speeking threshold
-    audio = r1.listen(mic) #Listening to the mic
+    with mic as source:
+        r1.adjust_for_ambient_noise(source) #Adjusting the speeking threshold
+        audio = r1.listen(source) #Listening to the mic
     
     try:
         text = r2.recognize_google(audio)
         if text == 'stop':
-            #Say that you stopped the program
+            speech_engine.say('You stopped the program by saying: stop.') #Say that you stopped the program
+            speech_engine.runAndWait()
+            exit(0)
         elif text == 'hey Simon':
-            #Speak
+            speech_engine.say('I am listening')
+            speech_engine.runAndWait()
+            listen_for_commands()            
     except sr.UnknownValueError:
-        #Say that Simon did not understand
+        speech_engine.say('Sir, I did not understand what you said.') #Say that Simon did not understand what you said
+        speech_engine.runAndWait()
     except sr.RequestError as e:
-        #Say there was an error
+        speech_engine.say('I believe something went wrong, sir.')
+        speech_engine.runAndWait()
         print(str(e))
+
+def listen_for_commands():
+    with mic as source:
+        r1.adjust_for_ambient_noise(source)
+        audio = r1.listen(source)
+    
+    try:
+        text = r2.recognize_google(audio)
+        if text == 'stop':
+            speech_engine.say('You stopped the program by saying: stop.') #Say that you stopped the program
+            speech_engine.runAndWait()
+            exit(0)
+    except sr.UnknownValueError:
+        speech_engine.say('Sir, I did not understand what you said.') #Say that Simon did not understand what you said
+        speech_engine.runAndWait()
+    except sr.RequestError as e:
+        speech_engine.say('I believe something went wrong, sir.')
+        speech_engine.runAndWait()
+        print(str(e))
+
+while True:
+    Simon()
